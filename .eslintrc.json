@@ -1,8 +1,11 @@
 {
 	"env": {
+		"node": true,
 		"browser": true,
 		"commonjs": true,
-		"es6": true
+		"es6": true,
+		"mocha": true,
+		"mongo": true
 	},
 	"extends": "eslint:recommended",
 	"parserOptions": {
@@ -19,6 +22,12 @@
 		"semi": [
 			1,
 			"always"
-		]
+		],
+		"no-console": 0,
+		"no-unused-vars": 1
+	},
+	"globals": {
+		"jQuery":true,
+		"$": true
 	}
 }
