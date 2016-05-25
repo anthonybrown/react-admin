@@ -3,7 +3,8 @@
 var gulp       = require('gulp');
 var connect    = require('gulp-connect');// runs local dev server
 var open       = require('gulp-open'); // open URL in a web browser
-var concat		 = require('gulp-concat')
+var concat		 = require('gulp-concat');
+var lint			 = require('gulp-eslint'); // lint our jsx and js files
 var browserify = require('browserify'); // bundle our js
 var reactify   = require('reactify'); // Transforms react jsx into js
 var source     = require('vinyl-source-stream'); //use conventional text streams with gulp
@@ -21,7 +22,7 @@ var config = {
 		dist : './dist',
 		mainJs: './src/main.js'
 	}
-}
+};
 
 // start a local dev server
 gulp.task('connect', function () {
@@ -60,9 +61,15 @@ gulp.task('css', function () {
 			.pipe(gulp.dest(config.paths.dist + '/css'));
 });
 
+gulp.task('lint', function() {
+	return gulp.src(config.paths.js)
+		.pipe(lint({config: 'eslint.config.json'}))
+		.pipe(lint.format());
+});
+
 gulp.task('watch', function() {
 	gulp.watch(config.paths.html, ['html']);
 	gulp.watch(config.paths.js,['js']);
 });
 
-gulp.task('default', ['html', 'js', 'css', 'open', 'watch']);
+gulp.task('default', ['lint', 'html', 'js', 'css', 'open', 'watch']);
