@@ -29685,8 +29685,6 @@ var Home = React.createClass({displayName: "Home",
 module.exports = Home;
 
 },{"react":157}],160:[function(require,module,exports){
-'use stict';
-
 $ = jQuery = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
