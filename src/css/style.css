@@ -1,0 +1,11 @@
+.nav > li {
+	display: inline-block;
+}
+
+.top {
+	margin: 5.7em 0 0 0;
+}
+
+.panel {
+	margin-top: 3em;
+}

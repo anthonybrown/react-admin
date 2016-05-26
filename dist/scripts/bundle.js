@@ -29637,23 +29637,31 @@ var About = React.createClass({displayName: "About",
 	render: function () {
 		return (
 			React.createElement("div", null, 
-				React.createElement("div", {className: "jumbotron  vertical-center text-center"}, 
+				React.createElement("div", {className: "jumbotron  vertical-center text-center top"}, 
 					React.createElement("div", {className: "container"}, 
 						React.createElement("h1", null, "About")
 					)
 				), 
 				React.createElement("div", {className: "container"}, 
-					React.createElement("p", null, 
-						"This application uses the following technologies:", 
-						React.createElement("ul", null, 
-							React.createElement("li", null, "React"), 
-							React.createElement("li", null, "React Router"), 
-							React.createElement("li", null, "Flux"), 
-							React.createElement("li", null, "Node"), 
-							React.createElement("li", null, "Gulp"), 
-							React.createElement("li", null, "Browserify"), 
-							React.createElement("li", null, "Bootstrap"), 
-							React.createElement("li", null, "Eslint")
+						React.createElement("div", {className: "panel"}, 
+							React.createElement("p", null, 
+								"This application uses the following technologies:", 
+								React.createElement("ul", null, 
+									React.createElement("li", null, "React"), 
+									React.createElement("li", null, "React Router"), 
+									React.createElement("li", null, "Flux"), 
+									React.createElement("li", null, "Node"), 
+									React.createElement("li", null, "Gulp"), 
+									React.createElement("li", null, "Browserify"), 
+									React.createElement("li", null, "Bootstrap"), 
+									React.createElement("li", null, "Eslint")
+								)
+							), 
+						React.createElement("p", null, "That's some shit huh to go into such a little app!"), 
+						React.createElement("p", null, 
+							"But now, it's setup to handle a ton of ability to scale," + ' ' +
+							"and to scale gracefully and handle added functionality with" + ' ' +
+							"grace and ease."
 						)
 					)
 				)
@@ -29669,10 +29677,35 @@ module.exports = About;
 
 var React = require('react');
 
+var Header = React.createClass({displayName: "Header",
+	render: function () {
+		return (
+			React.createElement("nav", {className: "navbar navbar-inverse navbar-fixed-top"}, 
+				React.createElement("div", {className: "container"}, 
+					React.createElement("a", {href: "/", className: "navbar-brand"}, 
+						React.createElement("img", {src: "images/react.png", alt: "logo", width: "32", height: "32"})
+					), 
+					React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
+						React.createElement("li", null, React.createElement("a", {href: "/"}, "Home")), 
+						React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About"))
+					)
+				)
+			)
+		);
+	}
+});
+
+module.exports = Header;
+
+},{"react":157}],160:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
 var Home = React.createClass({displayName: "Home",
 	render: function () {
 		return (
-			React.createElement("div", {className: "jumbotron vertical-center text-center"}, 
+			React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
 				React.createElement("div", {className: "container"}, 
 					React.createElement("h1", {className: "jumbo-title"}, "ReactJS Admin Panel"), 
 					React.createElement("p", null, "React, React Router, and Flux for ultra-responsive web apps!")
@@ -29684,37 +29717,43 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":157}],160:[function(require,module,exports){
+},{"react":157}],161:[function(require,module,exports){
 $ = jQuery = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Header = require('./components/common/header');
 
+(function (win) {
+	'use strict';
 
-var App = React.createClass({displayName: "App",
-	render: function () {
-		var Child;
+	var App = React.createClass({displayName: "App",
+		render: function () {
+			var Child;
 
-		switch(this.props.route) {
-			case 'about': Child = About;
-				break;
-			default: Child = Home;
+			switch(this.props.route) {
+				case 'about': Child = About;
+					break;
+				default: Child = Home;
+			}
+
+			return (
+				React.createElement("div", null, 
+					React.createElement(Header, null), 
+					React.createElement(Child, null)
+				)
+			);
 		}
+	});
 
-		return (
-			React.createElement("div", null, 
-				React.createElement(Child, null)
-			)
-		);
+	function render() {
+		var route = win.location.hash.substr(1);
+		React.render(React.createElement(App, {route: route}), document.getElementById('app'));
 	}
-});
 
-function render() {
-	var route = window.location.hash.substr(1);
-	React.render(React.createElement(App, {route: route}), document.getElementById('app'));
-}
+	win.addEventListener('hashchange', render);
+	render();
 
-window.addEventListener('hashchange', render);
-render();
+}(window));
 
-},{"./components/about/aboutPage":158,"./components/homePage":159,"jquery":1,"react":157}]},{},[160]);
+},{"./components/about/aboutPage":158,"./components/common/header":159,"./components/homePage":160,"jquery":1,"react":157}]},{},[161]);
