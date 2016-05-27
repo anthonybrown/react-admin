@@ -32,9 +32,9 @@ var About = React.createClass({
 							and to scale gracefully and handle added functionality with
 							grace and ease.
 						</p>
-					</div>
+						</div>
 				</div>
-			</div>
+		</div>
 		);
 	}
 });

@@ -14,6 +14,16 @@ module.exports = {
 			id: 'dan-wahlin',
 			firstName: 'Dan',
 			lastName: 'Wahlin'
+		},
+		{
+			id: 'Aaron Powell',
+			firstName: 'Aaron',
+			lastName: 'Powell'
+		},
+		{
+			id: 'Ben Orenstein',
+			firstName: 'Ben',
+			lastName: 'Orenstein'
 		}
 	]
 };

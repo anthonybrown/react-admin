@@ -18,7 +18,7 @@ var config = {
 		css: [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
 			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
-			'.src/css/style.css'
+			'./src/css/style.css'
 		],
 		dist: './dist',
 		mainJs: './src/main.js'
@@ -59,7 +59,6 @@ gulp.task('js', function() {
 gulp.task('css', function() {
 	gulp.src(config.paths.css)
 		.pipe(concat('bundle.css'))
-		.pipe(concat('style.css'))
 		.pipe(gulp.dest(config.paths.dist + '/css'));
 });
 

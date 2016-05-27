@@ -36,10 +36,10 @@ var AuthorApi = {
 			// the servers would generate id's for the new authors
 			// cloning so copy returned is passed by value rather than passed by reference.
 			author.id = _generateId(author);
-			authors.push(author);
+			authors.push(_clone(author));
 		}
 
-		return _clone(author);
+		return author;
 	},
 
 	deleteAuthor: function (id) {
