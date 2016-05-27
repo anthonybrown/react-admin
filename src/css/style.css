@@ -9,3 +9,9 @@
 .panel {
 	margin-top: 3em;
 }
+
+.table {
+	border: 1px solid #cdcdcd;
+	margin-top: 3em;
+	border-radius: 3px;
+}
