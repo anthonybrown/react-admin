@@ -23,7 +23,7 @@ var AuthorList = React.createClass({
 				</div>
 				<div className='container'>
 					<div className='panel panel-default'>
-						<div className='panel-heading'><h3>Pluralsight Authors</h3></div>
+						<div className='panel-heading'><h4>Pluralsight Authors</h4></div>
 						<div className='table-responsive'>
 							<table className='table table-striped'>
 								<thead>
