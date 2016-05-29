@@ -49344,16 +49344,16 @@ module.exports = AuthorPage;
 },{"../../api/authorApi":201,"./authorList":205,"react":200}],207:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
+var React  = require('react');
 var Router = require('react-router');
-var Link = Router.Link;
+var Link   = Router.Link;
 
 var Header = React.createClass({displayName: "Header",
 	render: function () {
 		return (
 			React.createElement("nav", {className: "navbar navbar-inverse navbar-fixed-top"}, 
 				React.createElement("div", {className: "container"}, 
-					React.createElement("a", {href: "/", className: "navbar-brand"}, 
+					React.createElement(Link, {to: "app", className: "navbar-brand"}, 
 						React.createElement("img", {src: "images/react.png", alt: "logo", width: "32", height: "32"})
 					), 
 					React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
