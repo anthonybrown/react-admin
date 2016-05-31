@@ -49222,11 +49222,17 @@ var About = React.createClass({displayName: "About",
 									React.createElement("li", null, "Eslint")
 								)
 							), 
-						React.createElement("p", null, "That's some shit huh to go into such a little app!"), 
+							React.createElement("p", null, 
+									"Now you might be thinking,", 
+									React.createElement("blockquote", null, 
+										"\"that's a lot of work for such a small app.\""
+									), 
+									"and it might be overkill if this app just stayed as is."
+							), 
 						React.createElement("p", null, 
-							"But now, it's setup to handle a ton of ability to scale," + ' ' +
-							"and to scale gracefully and handle added functionality with" + ' ' +
-							"grace and ease."
+							"That might be true, but now our app is able to scale gracefully, yes there" + ' ' +
+							"is a lot of code to setup this app, but now that's it's setup, it will be" + ' ' +
+							"easy to add functionality and scale."
 						)
 						)
 				)
@@ -49373,6 +49379,8 @@ module.exports = Header;
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
+var Link   = Router.Link;
 
 var Home = React.createClass({displayName: "Home",
 	render: function () {
@@ -49380,7 +49388,8 @@ var Home = React.createClass({displayName: "Home",
 			React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
 				React.createElement("div", {className: "container"}, 
 					React.createElement("h1", {className: "jumbo-title"}, "ReactJS Admin Panel"), 
-					React.createElement("p", null, "React, React Router, and Flux for ultra-responsive web apps!")
+					React.createElement("p", null, "React, React Router, and Flux for ultra-responsive web apps!"), 
+					React.createElement(Link, {to: "about", className: "btn btn-info btn-lg"}, "Learn More")
 				)
 			)
 		);
@@ -49389,7 +49398,27 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":200}],209:[function(require,module,exports){
+},{"react":200,"react-router":30}],209:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Link  = require('react-router').Link;
+
+var PageNotFound = React.createClass({displayName: "PageNotFound",
+	render: function () {
+		return (
+			React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
+				React.createElement("h1", null, "Page not found."), 
+				React.createElement("p", null, "Woops! Sorry, there is nothing to see here."), 
+				React.createElement("p", null, React.createElement(Link, {to: "app"}, "Back to Home"))
+			)
+		);
+	}
+});
+
+module.exports = PageNotFound;
+
+},{"react":200,"react-router":30}],210:[function(require,module,exports){
 'use strict';
 
 var React   = require('react');
@@ -49400,22 +49429,24 @@ Router.run(routes, function (Handler) {
 	React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
 
-},{"./routes":210,"react":200,"react-router":30}],210:[function(require,module,exports){
+},{"./routes":211,"react":200,"react-router":30}],211:[function(require,module,exports){
 'use strict';
 
-var React        = require('react');
-var Router       = require('react-router');
-var DefaultRoute = Router.DefaultRoute;
-var Route        = Router.Route;
+var React         = require('react');
+var Router        = require('react-router');
+var DefaultRoute  = Router.DefaultRoute;
+var Route         = Router.Route;
+var NotFoundRoute = Router.NotFoundRoute;
 
 var routes = (
 	React.createElement(Route, {name: "app", path: "/", handler: require('./components/app')}, 
 		React.createElement(DefaultRoute, {handler: require('./components/homePage')}), 
 		React.createElement(Route, {name: "authors", handler: require('./components/authors/authorPage')}), 
-		React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')})
+		React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')}), 
+		React.createElement(NotFoundRoute, {handler: require('./components/pageNotFound')})
 	)
 );
 
 module.exports = routes;
 
-},{"./components/about/aboutPage":203,"./components/app":204,"./components/authors/authorPage":206,"./components/homePage":208,"react":200,"react-router":30}]},{},[209]);
+},{"./components/about/aboutPage":203,"./components/app":204,"./components/authors/authorPage":206,"./components/homePage":208,"./components/pageNotFound":209,"react":200,"react-router":30}]},{},[210]);

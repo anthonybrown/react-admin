@@ -26,11 +26,17 @@ var About = React.createClass({
 									<li>Eslint</li>
 								</ul>
 							</p>
-						<p>That's some shit huh to go into such a little app!</p>
+							<p>
+									Now you might be thinking,
+									<blockquote>
+										"that's a lot of work for such a small app."
+									</blockquote>
+									and it might be overkill if this app just stayed as is.
+							</p>
 						<p>
-							But now, it's setup to handle a ton of ability to scale,
-							and to scale gracefully and handle added functionality with
-							grace and ease.
+							That might be true, but now our app is able to scale gracefully, yes there
+							is a lot of code to setup this app, but now that's it's setup, it will be
+							easy to add functionality and scale.
 						</p>
 						</div>
 				</div>
