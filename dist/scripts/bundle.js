@@ -49212,14 +49212,15 @@ var About = React.createClass({displayName: "About",
 							React.createElement("p", null, 
 								"This application uses the following technologies:", 
 								React.createElement("ul", null, 
-									React.createElement("li", null, "React"), 
-									React.createElement("li", null, "React Router"), 
-									React.createElement("li", null, "Flux"), 
-									React.createElement("li", null, "Node"), 
-									React.createElement("li", null, "Gulp"), 
-									React.createElement("li", null, "Browserify"), 
-									React.createElement("li", null, "Bootstrap"), 
-									React.createElement("li", null, "Eslint")
+									React.createElement("li", null, "React-v0.13.3"), 
+									React.createElement("li", null, "React Router-v0.13.3"), 
+									React.createElement("li", null, "Flux-v2.0.3"), 
+									React.createElement("li", null, "Node-v6.1.0"), 
+									React.createElement("li", null, "Gulp-v3.9.0"), 
+									React.createElement("li", null, "Browserify-v11.0.1"), 
+									React.createElement("li", null, "Bootstrap-v3.3.5"), 
+									React.createElement("li", null, "Eslint-v2.10.2"), 
+									React.createElement("li", null, "Eslint-Plugin-React-v5.1.1")
 								)
 							), 
 							React.createElement("p", null, 
@@ -49230,9 +49231,13 @@ var About = React.createClass({displayName: "About",
 									"and it might be overkill if this app just stayed as is."
 							), 
 						React.createElement("p", null, 
-							"That might be true, but now our app is able to scale gracefully, yes there" + ' ' +
-							"is a lot of code to setup this app, but now that's it's setup, it will be" + ' ' +
-							"easy to add functionality and scale."
+							"But now we have a great starting point and the app is able to scale gracefully, yes there" + ' ' +
+							"is a lot of code to bootstrap this app, but now that it's setup, we have a great" + ' ' +
+							"dev environment, and a great boilerplate for a React / React-Router and Flux or Redux."
+						), 
+						React.createElement("p", null, 
+							"Since React is just the \"View\" layer, and a library and not a framework, it let's" + ' ' +
+							"you chose what you want to use or use whatever your app needs to accomplish it's goals."
 						)
 						)
 				)
@@ -49410,7 +49415,7 @@ var PageNotFound = React.createClass({displayName: "PageNotFound",
 			React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
 				React.createElement("h1", null, "Page not found."), 
 				React.createElement("p", null, "Woops! Sorry, there is nothing to see here."), 
-				React.createElement("p", null, React.createElement(Link, {to: "app"}, "Back to Home"))
+				React.createElement("p", {className: "btn btn-warning btn-lg wht"}, React.createElement(Link, {to: "app"}, "Back to Home"))
 			)
 		);
 	}

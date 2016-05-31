@@ -16,14 +16,15 @@ var About = React.createClass({
 							<p>
 								This application uses the following technologies:
 								<ul>
-									<li>React</li>
-									<li>React Router</li>
-									<li>Flux</li>
-									<li>Node</li>
-									<li>Gulp</li>
-									<li>Browserify</li>
-									<li>Bootstrap</li>
-									<li>Eslint</li>
+									<li>React-v0.13.3</li>
+									<li>React Router-v0.13.3</li>
+									<li>Flux-v2.0.3</li>
+									<li>Node-v6.1.0</li>
+									<li>Gulp-v3.9.0</li>
+									<li>Browserify-v11.0.1</li>
+									<li>Bootstrap-v3.3.5</li>
+									<li>Eslint-v2.10.2</li>
+									<li>Eslint-Plugin-React-v5.1.1</li>
 								</ul>
 							</p>
 							<p>
@@ -34,9 +35,13 @@ var About = React.createClass({
 									and it might be overkill if this app just stayed as is.
 							</p>
 						<p>
-							That might be true, but now our app is able to scale gracefully, yes there
-							is a lot of code to setup this app, but now that's it's setup, it will be
-							easy to add functionality and scale.
+							But now we have a great starting point and the app is able to scale gracefully, yes there
+							is a lot of code to bootstrap this app, but now that it's setup, we have a great
+							dev environment, and a great boilerplate for a React / React-Router and Flux or Redux.
+						</p>
+						<p>
+							Since React is just the "View" layer, and a library and not a framework, it let's
+							you chose what you want to use or use whatever your app needs to accomplish it's goals.
 						</p>
 						</div>
 				</div>
