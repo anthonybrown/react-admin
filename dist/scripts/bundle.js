@@ -49442,13 +49442,18 @@ var Router        = require('react-router');
 var DefaultRoute  = Router.DefaultRoute;
 var Route         = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
+var Redirect			= Router.Redirect;
 
 var routes = (
 	React.createElement(Route, {name: "app", path: "/", handler: require('./components/app')}, 
 		React.createElement(DefaultRoute, {handler: require('./components/homePage')}), 
 		React.createElement(Route, {name: "authors", handler: require('./components/authors/authorPage')}), 
 		React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')}), 
-		React.createElement(NotFoundRoute, {handler: require('./components/pageNotFound')})
+		React.createElement(NotFoundRoute, {handler: require('./components/pageNotFound')}), 
+		React.createElement(Redirect, {from: "about-us", to: "about"}), 
+		React.createElement(Redirect, {from: "authurs", to: "authors"}), 
+		React.createElement(Redirect, {from: "awthurs", to: "authors"}), 
+		React.createElement(Redirect, {from: "about/*", to: "about"})
 	)
 );
 
