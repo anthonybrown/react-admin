@@ -5,7 +5,8 @@ var React = require('react');
 var About = React.createClass({
 	// demo: willTransitionTo and willTransitionFrom
 	// this is silly using it here, hence for demostation.
-	statics: {
+	// uncomment to see in action
+/*statics: {
 		willTransitionTo: function (transition, params, query, callback) {
 			if (!confirm('Are you sure you want to read a page that\'s this boring?')) {
 				transition.about();
@@ -19,7 +20,7 @@ var About = React.createClass({
 				transition.about();
 			}
 		}
-	},
+	},*/
 
 	render: function () {
 		return (
