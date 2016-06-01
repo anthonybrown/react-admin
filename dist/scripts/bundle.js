@@ -49199,6 +49199,24 @@ module.exports = {
 var React = require('react');
 
 var About = React.createClass({displayName: "About",
+	// demo: willTransitionTo and willTransitionFrom
+	// this is silly using it here, hence for demostation.
+	statics: {
+		willTransitionTo: function (transition, params, query, callback) {
+			if (!confirm('Are you sure you want to read a page that\'s this boring?')) {
+				transition.about();
+			} else {
+				callback();
+			}
+	},
+
+	willTransitionFrom: function (transition, component) {
+			if (!confirm('Are you sure you want to leave a page that\'s this exciting?\nyou might miss something, lol.')) {
+				transition.about();
+			}
+		}
+	},
+
 	render: function () {
 		return (
 			React.createElement("div", null, 
@@ -49430,8 +49448,8 @@ var React   = require('react');
 var Router  = require('react-router');
 var routes  = require('./routes');
 
-Router.run(routes, function (Handler) {
-	React.render(React.createElement(Handler, null), document.getElementById('app'));
+Router.run(routes, Router.HistoryLocation, function (Handler) {// using Router.HistoryLocation using the HTML5 pushstate
+	React.render(React.createElement(Handler, null), document.getElementById('app'));   // the default is the Hash which works on older browsers but not on server.
 });
 
 },{"./routes":211,"react":200,"react-router":30}],211:[function(require,module,exports){
