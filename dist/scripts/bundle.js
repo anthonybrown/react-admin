@@ -49311,7 +49311,8 @@ var AuthorForm = React.createClass({displayName: "AuthorForm",
 												className: "form-control", 
 												placeholder: "First Name", 
 												ref: "firstName", 
-												value: "", 
+												onChange: this.props.onChange, 
+												value: this.props.author.firstName, 
 												id: "firstName"}
 								), 
 								React.createElement("br", null), 
@@ -49321,7 +49322,8 @@ var AuthorForm = React.createClass({displayName: "AuthorForm",
 												className: "form-control", 
 												placeholder: "Last Name", 
 												ref: "lastName", 
-												value: "", 
+												onChange: this.props.onChange, 
+												value: this.props.author.lastName, 
 												id: "lastName"}
 								), 
 								React.createElement("br", null), 
@@ -49430,13 +49432,28 @@ var React			 = require('react');
 var AuthorForm = require('./authorForm');
 
 var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
+	getInitialState: function() {
+		return {
+			author: {id: '', firstName: '', lastName: ''}
+		};
+	},
+
+	setAuthorState: function (e) {
+		var field = e.target.name;
+		var value = e.target.value;
+		this.state.author[field] = value;
+		return this.setState({ author: this.state.author });
+	},
+
 	render: function () {
 		return (
 			React.createElement("div", null, 
 				React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
 					React.createElement("h1", null, "Manage Authors")
 				), 
-				React.createElement(AuthorForm, null)
+				React.createElement(AuthorForm, {
+						author: this.state.author, 
+						onChange: this.setAuthorState})
 			)
 		);
 	}
