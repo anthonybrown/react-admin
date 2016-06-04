@@ -5,7 +5,7 @@
 	margin-top: -5px;
 }
 .top {
-	margin: 4.2em 0 0 0;
+	margin: 4.4em 0 0 0;
 }
 
 .panel {
@@ -31,8 +31,9 @@
 	margin-bottom: 2em;
 }
 
+
 @media screen and (min-width: 768px) {
 	.top {
-		margin-top: 3.6em;
+		margin-top: 4em;
 	}
 }

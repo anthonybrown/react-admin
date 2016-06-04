@@ -49656,7 +49656,7 @@ var App = React.createClass({displayName: "App",
 		return (
 			React.createElement("div", null, 
 				React.createElement(Header, null), 
-				React.createElement("div", {className: "container-fluid"}, 
+				React.createElement("div", {className: "row"}, 
 					React.createElement(RouteHandler, null)
 				)
 			)
@@ -49673,6 +49673,12 @@ var React = require('react');
 var Input = require('../common/textInput');
 
 var AuthorForm = React.createClass({displayName: "AuthorForm",
+	propTypes: {
+		author:	React.PropTypes.object.isRequired,
+		onSave:	React.PropTypes.func.isRequired,
+		onChange: React.PropTypes.func.isRequired,
+		errors: React.PropTypes.object
+	},
 
 	render: function() {
 		return (
@@ -49686,14 +49692,16 @@ var AuthorForm = React.createClass({displayName: "AuthorForm",
 								label: "First name", 
 								id: "fistName", 
 								value: this.props.author.firstName, 
-								onChange: this.props.onChange}), 
+								onChange: this.props.onChange, 
+								error: this.props.errors.firstName}), 
 
 							React.createElement(Input, {
 								name: "lastName", 
 								label: "Last Name", 
 								id: "lastName", 
 								value: this.props.author.lastName, 
-								onChange: this.props.onChange}), 
+								onChange: this.props.onChange, 
+								error: this.props.errors.lastName}), 
 
 							React.createElement("input", {
 									type: "submit", 
@@ -49734,9 +49742,7 @@ var AuthorList = React.createClass({displayName: "AuthorList",
 		return (
 			React.createElement("div", null, 
 				React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
-					React.createElement("div", {className: "container"}, 
-						React.createElement("h1", {className: "jumbo-title"}, "Authors")
-					)
+					React.createElement("h1", {className: "jumbo-title"}, "Authors")
 				), 
 				React.createElement("div", {className: "container"}, 
 					React.createElement("div", {className: "panel panel-default"}, 
@@ -49814,7 +49820,8 @@ var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
 
 	getInitialState: function() {
 		return {
-			author: {id: '', firstName: '', lastName: ''}
+			author: {id: '', firstName: '', lastName: ''},
+			errors: {}
 		};
 	},
 
@@ -49825,11 +49832,33 @@ var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
 		return this.setState({ author: this.state.author });
 	},
 
+	authorFormIsValid: function() {
+		var formIsValid = true;
+		this.state.errors = {}; //clear any previous errors.
+
+		if (this.state.author.firstName.length < 3) {
+			this.state.errors.firstName = 'Sorry, first name must have at least 3 characters.';
+			formIsValid = false;
+		}
+
+		if (this.state.author.lastName.length < 3) {
+			this.state.errors.lastName = 'Sorry, last name must have at least 3 characters.';
+			formIsValid = false;
+		}
+
+		this.setState({errors: this.state.errors});
+		return formIsValid;
+	},
+
 	saveAuthor: function(e) {
 		e.preventDefault();
 
+		if (!this.authorFormIsValid()) {
+			return;
+		}
+
 		AuthorApi.saveAuthor(this.state.author);
-		toastr.success('Author saved');
+		toastr.success('Author saved.');
 		this.transitionTo('authors');
 	},
 
@@ -49842,7 +49871,8 @@ var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
 				React.createElement(AuthorForm, {
 						author: this.state.author, 
 						onChange: this.setAuthorState, 
-						onSave: this.saveAuthor})
+						onSave: this.saveAuthor, 
+						errors: this.state.errors})
 			)
 		);
 	}
@@ -49860,7 +49890,7 @@ var Link   = Router.Link;
 var Header = React.createClass({displayName: "Header",
 	render: function () {
 		return (
-			React.createElement("nav", {className: "navbar navbar-inverse navbar-fixed-top"}, 
+			React.createElement("nav", {className: "navbar navbar-default navbar-fixed-top"}, 
 				React.createElement("div", {className: "container"}, 
 					React.createElement(Link, {to: "app", className: "navbar-brand"}, 
 						React.createElement("img", {src: "images/react.png", alt: "logo", width: "32", height: "32"})
@@ -49933,11 +49963,9 @@ var Home = React.createClass({displayName: "Home",
 	render: function () {
 		return (
 			React.createElement("div", {className: "jumbotron vertical-center text-center top"}, 
-				React.createElement("div", {className: "container"}, 
 					React.createElement("h1", {className: "jumbo-title"}, "ReactJS Admin Panel"), 
 					React.createElement("p", null, "React, React Router, and Flux for ultra-responsive web apps!"), 
 					React.createElement(Link, {to: "about", className: "btn btn-info btn-lg"}, "Learn More")
-				)
 			)
 		);
 	}

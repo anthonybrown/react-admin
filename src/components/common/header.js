@@ -7,7 +7,7 @@ var Link   = Router.Link;
 var Header = React.createClass({
 	render: function () {
 		return (
-			<nav className='navbar navbar-inverse navbar-fixed-top'>
+			<nav className='navbar navbar-default navbar-fixed-top'>
 				<div className='container'>
 					<Link to='app' className='navbar-brand'>
 						<img src='images/react.png' alt='logo' width='32' height='32' />

@@ -20,9 +20,7 @@ var AuthorList = React.createClass({
 		return (
 			<div>
 				<div className='jumbotron vertical-center text-center top'>
-					<div className='container'>
-						<h1 className='jumbo-title'>Authors</h1>
-					</div>
+					<h1 className='jumbo-title'>Authors</h1>
 				</div>
 				<div className='container'>
 					<div className='panel panel-default'>
