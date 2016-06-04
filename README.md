@@ -1,6 +1,6 @@
 #react-admin
 
-This is my implementation of the (Pluarlsight, Building Applications with React and Flux)[https://www.pluralsight.com/courses/react-flux-building-applications] course, by Cory House, excellent course.
+This is my implementation of the [Pluarlsight, Building Applications with React and Flux] (https://www.pluralsight.com/courses/react-flux-building-applications) course, by Cory House, excellent course.
 
 Using ES5 with the createClass syntax
 Using hard coded API instead of a real API
