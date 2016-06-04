@@ -23,8 +23,10 @@ var AuthorPage = React.createClass({
 		return (
 			<div className='container-fluid'>
 				<AuthorList authors={this.state.authors} />
-				<h4>Add author</h4>
-				<Link to='addAuthor' className='btn btn-default'>Add Author</Link>
+				<div className='container'>
+					<h4>Add author</h4>
+					<Link to='addAuthor' className='btn btn-default'>Add Author</Link>
+				</div>
 			</div>
 		);
 	}

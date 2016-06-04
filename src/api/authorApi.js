@@ -26,7 +26,7 @@ var AuthorApi = {
 
 	saveAuthor: function (author) {
 		// this would be an ajax call to the sever here.
-		console.log('Pretend this is just saved the author to the DB via AJAX call...');
+		console.log('Just saved the author to the DB via AJAX call...');
 
 		if (author.id) {
 			var existingAuthorIndex = _.indexOf(authors, _.find(authors, {id: author.id}));
