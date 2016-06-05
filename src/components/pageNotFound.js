@@ -8,7 +8,7 @@ var PageNotFound = React.createClass({
 		return (
 			<div className='jumbotron vertical-center text-center top'>
 				<h1>Page not found.</h1>
-				<p>Woops! Sorry, there is nothing to see here.</p>
+				<h3>Woops! Sorry, there is nothing to see here.</h3>
 				<p className='btn btn-warning btn-lg wht'><Link to='app'>Back to Home</Link></p>
 			</div>
 		);

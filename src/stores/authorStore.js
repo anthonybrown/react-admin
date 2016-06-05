@@ -28,7 +28,7 @@ var AuthorStore = assign({}, EventEmmiter.prototype, {
 	},
 
 	getAuthorById: function (id) {
-		_.find(_authors, {id: id});
+		return _.find(_authors, {id: id});
 	}
 
 });
@@ -41,6 +41,19 @@ Dispatcher.register(function(action) {
 			break;
 		case ActionTypes.CREATE_AUTHOR:
 			_authors.push(action.author);
+			AuthorStore.emitChange();
+			break;
+		case ActionTypes.UPDATE_AUTHOR:
+			var existingAuthor = _.find(_authors, {id: action.author.id});
+			var existingAuthorIndex = _.indexOf(_authors, existingAuthor);
+			_authors.splice(existingAuthorIndex, 1, action.author);
+			AuthorStore.emitChange();
+			break;
+
+		case ActionTypes.DELETE_AUTHOR:
+			_.remove(_authors, function (author) {
+				return action.id === author.id;
+			});
 			AuthorStore.emitChange();
 			break;
 		default:
