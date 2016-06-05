@@ -10,7 +10,7 @@ var Header = React.createClass({
 			<nav className='navbar navbar-default navbar-fixed-top'>
 				<div className='container'>
 					<Link to='app' className='navbar-brand'>
-						<img src='images/react.png' alt='logo' width='32' height='32' />
+						<img src='../images/react.png' alt='logo' width='32' height='32' />
 					</Link>
 					<ul className='nav navbar-nav navbar-right'>
 						<li><Link to='app'>Home</Link></li>
